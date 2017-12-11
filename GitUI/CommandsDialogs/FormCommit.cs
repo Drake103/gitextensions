@@ -286,7 +286,12 @@ namespace GitUI.CommandsDialogs
 
         private void AdjustCommitButtonPanelHeight()
         {
-            splitRight.Panel2MinSize = Math.Max(splitRight.Panel2MinSize, flowCommitButtons.PreferredSize.Height);
+            const int additionalMargin = 10;
+            var preferredPanel2MinSize = commitButtonPanel.PreferredSize.Height
+                + resetButtonPanel.PreferredSize.Height
+                + additionalMargin;
+
+            splitRight.Panel2MinSize = Math.Max(splitRight.Panel2MinSize, preferredPanel2MinSize);
             splitRight.SplitterDistance = Math.Min(splitRight.SplitterDistance, splitRight.Height - splitRight.Panel2MinSize);
         }
 
